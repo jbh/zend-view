@@ -144,9 +144,8 @@ class ServerUrl extends AbstractHelper
         }
 
         switch (true) {
-            case (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] === true)):
-            case (isset($_SERVER['HTTP_SCHEME']) && ($_SERVER['HTTP_SCHEME'] == 'https')):
-            case (443 === $this->getPort()):
+            case (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] === true)):
+            case (isset($_SERVER['HTTP_SCHEME']) && (strtolower($_SERVER['HTTP_SCHEME']) == 'https')):
             case $this->isReversedProxy():
                 $scheme = 'https';
                 break;
